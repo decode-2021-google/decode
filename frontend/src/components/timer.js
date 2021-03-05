@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 const TimerStyles = styled.div`
-  margin-top: 200px;
+  margin-top: 5vh;
   .container {
     position: relative;
     display: flex;
