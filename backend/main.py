@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 
 @app.route('/test/get', methods=['GET'])
-def search_form():
+def test_get():
     return jsonify({'text': 'successful'}), 200
 
 
