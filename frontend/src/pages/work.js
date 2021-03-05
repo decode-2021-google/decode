@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { ControlBar } from "../components/controlBar";
-import { TestAuth } from "../components/testAuth";
 import { TopNav } from "../components/topNav";
 import { Timer } from "../components/timer";
+import { ToDoListIcon } from "../components/toDoListIcon";
 
 const WorkStyles = styled.div`
   .top {
@@ -23,6 +23,7 @@ const Work = () => {
         <ControlBar />
       </div>
       <div className="bottom"></div>
+      <ToDoListIcon />
     </WorkStyles>
   );
 };

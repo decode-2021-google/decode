@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { TopNav } from "../components/topNav";
 import { Timer } from "../components/timer";
 import { PrimaryButton } from "../components/primaryButton";
+import { ToDoListIcon } from "../components/toDoListIcon";
 
 const WelcomeStyles = styled.div`
   .button-container {
@@ -29,6 +30,7 @@ const Welcome = () => {
       <div className="sign-in-container">
         Already have an account? <a href="">Sign in</a>
       </div>
+      <ToDoListIcon />
     </WelcomeStyles>
   );
 };
