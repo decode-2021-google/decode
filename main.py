@@ -108,10 +108,11 @@ def rate_content():
 
 @app.route('/api/add_user', methods=['PUT'])
 def add_userid():
-    user_id = request.args.get('user_id', -1)
+    user_id = request.json['user_id'] if 'user_id' in request.json else -1
     if user_id == -1:
         abort(406)
     User.add_userid(user_id)
+    return {'text': 'Successful'}, 200
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)
