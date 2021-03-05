@@ -24,7 +24,9 @@ function App() {
       {/* {authMethods.init(firebaseInstance)} */}
         <Switch>
           <Route path="/" exact>
-            <IfFirebaseUnAuthed><Welcome/></IfFirebaseUnAuthed>
+            <IfFirebaseUnAuthed>
+        <FirebaseAuthConsumer>
+          {({ isSignedIn, user, providerId }) => { return (<Welcome firebase={firebase} user={user} isSignedIn={isSignedIn}/>);}}</FirebaseAuthConsumer></IfFirebaseUnAuthed>
             <IfFirebaseAuthed>
         <FirebaseAuthConsumer>
           {({ isSignedIn, user, providerId }) => { return (<Work user={user} isSignedIn={isSignedIn}/>);}}</FirebaseAuthConsumer>
@@ -47,9 +49,9 @@ function App() {
         <FirebaseAuthConsumer>
           {({ isSignedIn, user, providerId }) => { return (<Relax user={user} isSignedIn={isSignedIn}/>);}}</FirebaseAuthConsumer>
           </Route>
-          <Route path="*">
+          {/* <Route path="*">
             <NotFound />
-          </Route>
+          </Route> */}
         </Switch>
       </FirebaseAuthProvider>
     </div>

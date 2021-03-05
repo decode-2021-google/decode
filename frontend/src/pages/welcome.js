@@ -22,10 +22,9 @@ const WelcomeStyles = styled.div`
   }
 `;
 
-const Welcome = () => {
+const Welcome = (props) => {
   const [totalTime, setTotalTime] = useState(0);
   const [playState, setPlayState] = useState(false);
-
   return (
     <WelcomeStyles>
       <TopNav />
@@ -39,9 +38,12 @@ const Welcome = () => {
       </div>
       <div className="sign-in-container">
         Already have an account?{" "}
+        
         <span
           onClick={() => {
-            authMethods.signIn();
+            const googleAuthProvider = new props.firebase.auth.GoogleAuthProvider();
+            props.firebase.auth().signInWithPopup(googleAuthProvider);
+            console.log(props.firebase.auth().user);
           }}
         >
           Sign In with Google
