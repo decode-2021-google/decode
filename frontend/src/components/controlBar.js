@@ -8,8 +8,8 @@ import styled from "styled-components";
 const ControlBarStyles = styled.div`
   .controlButton {
     display: flex;
-    alignitems: "center";
-    justifycontent: "center";
+    align-items: center;
+    justify-content: center;
   }
 
   .primary-control {

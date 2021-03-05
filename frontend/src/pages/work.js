@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { DarkModeSwitch } from "../components/darkmodeSwitch";
-import { ProfileSettings } from "../components/profileSettings";
 import { ControlBar } from "../components/controlBar";
 import { TestAuth } from "../components/testAuth";
+import { TopNav } from "../components/topNav";
 import { Timer } from "../components/timer";
 
 const WorkStyles = styled.div`
@@ -16,11 +15,8 @@ const WorkStyles = styled.div`
 const Work = () => {
   return (
     <WorkStyles>
-      <div className="top">
-        <DarkModeSwitch />
-        <ProfileSettings />
-        <TestAuth />
-      </div>
+      <TopNav />
+      <TestAuth />
       <div className="timer">
         <Timer />
       </div>
