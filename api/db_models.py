@@ -61,6 +61,7 @@ class User():
                         '''.format(tablename=Activity.__tablename__ ,category=category))
         return sample(a, 1)[0]
 
+
     def create_activity(self, query, content_type):
         category, score = sample(self.get_categories(), 1)[0]
         _id = str(uuid.uuid1())
