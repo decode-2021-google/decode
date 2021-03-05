@@ -4,6 +4,20 @@
 
 The backend is written using Flask.
 
+## Frontend
+
+### Requirements
+- Node.js
+- Yarn Package Manager
+
+### Install
+    $ git clone https://github.com/decode-2021-google/decode.git
+    $ cd frontend
+    $ yarn install
+    
+### Start & watch
+    $ yarn start
+
 ### Testing locally
 
 - Make sure to have Python 3.7+ installed
