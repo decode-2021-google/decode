@@ -1,5 +1,5 @@
 import psycopg2
-from sqlalchemy import create_engine
+import sqlalchemy
 
 
 class Connection:
@@ -44,7 +44,22 @@ class Connection:
         self.conn.close()
 
     def create_engine(self):
-        self.engine = create_engine('postgresql+pg8000://{0}:{1}@{2}:{3}/{4}'.format(self.user, self.password, self.host, self.port, self.database))
+        self.engine = sqlalchemy.create_engine(
+            # Equivalent URL:
+            # postgres+pg8000://<db_user>:<db_pass>@/<db_name>
+            #                         ?unix_sock=<socket_path>/<cloud_sql_instance_name>/.s.PGSQL.5432
+            sqlalchemy.engine.url.URL(
+                drivername="postgresql+pg8000",
+                username=self.user,  # e.g. "my-database-user"
+                password=self.password,  # e.g. "my-database-password"
+                database=self.database,  # e.g. "my-database-name"
+                query={
+                    "unix_sock": "{}/{}/.s.PGSQL.5432".format(
+                        "/cloudsql",  
+                        "decode-hackathon:us-central1:pomodoro")  # i.e "<PROJECT-NAME>:<INSTANCE-REGION>:<INSTANCE-NAME>"
+                }
+            )
+        )
 
     def query(self, query):
         return self.engine.execute(query).fetchall()
