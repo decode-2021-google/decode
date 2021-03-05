@@ -1,9 +1,9 @@
 import React from "react";
 import { Icon } from "@iconify/react";
-import taskListF from '@iconify/icons-jam/task-list-f';
+import taskListF from "@iconify/icons-jam/task-list-f";
 import styled from "styled-components";
 
-const IconStyles = styled.div` 
+const IconStyles = styled.div`
   .todo-icon {
     color: #ffffff;
     width: 60px;
@@ -12,12 +12,11 @@ const IconStyles = styled.div`
 `;
 
 const ToDoListIcon = () => {
-    return (
-      <IconStyles>
-          <Icon icon={taskListF} class="todo-icon"/>
-      </IconStyles>
-    );
-  };
-  
-export { ToDoListIcon };
+  return (
+    <IconStyles>
+      <Icon icon={taskListF} class="todo-icon" />
+    </IconStyles>
+  );
+};
 
+export { ToDoListIcon };

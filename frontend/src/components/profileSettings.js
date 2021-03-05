@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import {authMethods} from "../AuthMethods";
 
 const ProfileSettingsStyles = styled.div`
   display: flex;
@@ -27,6 +28,9 @@ const ProfileSettings = () => {
           role="img"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 496 512"
+          onClick={() => {
+            authMethods.signOut();
+          }}
         >
           <path
             fill="white"

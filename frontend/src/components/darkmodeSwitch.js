@@ -26,7 +26,6 @@ const DarkModeSwitch = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const currentLocation = useLocation();
   useEffect(() => {
-    console.log(isDarkMode);
     const bodyEl = document.querySelector("body");
     if (isDarkMode) {
       bodyEl.style.background = "#22303C";
@@ -34,7 +33,7 @@ const DarkModeSwitch = () => {
       switch (currentLocation.pathname) {
         case "/break":
           bodyEl.style.background =
-            "linear-gradient(335.92deg, #15202B 5.49%, #192734 73.38%, #22303C 104.99%)";
+            "linear-gradient(335.92deg, #1A71B9 5.49%, #73D5F3 104.99%)";
           break;
         case "/work":
           bodyEl.style.background =
@@ -54,8 +53,17 @@ const DarkModeSwitch = () => {
     }
   }, [isDarkMode]);
   return (
-    <DarkModeSwitchStyles onClick={() => setIsDarkMode(!isDarkMode)}>
-      <div className="dot" style={{ left: isDarkMode ? "1.2rem" : "0.2rem" }} />
+    <DarkModeSwitchStyles
+      onClick={() => setIsDarkMode(!isDarkMode)}
+      style={{ backgroundColor: isDarkMode ? "white" : "transparent" }}
+    >
+      <div
+        className="dot"
+        style={{
+          left: isDarkMode ? "1.2rem" : "0.2rem",
+          backgroundColor: isDarkMode ? "#22303C" : "white",
+        }}
+      />
     </DarkModeSwitchStyles>
   );
 };
