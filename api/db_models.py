@@ -49,7 +49,7 @@ class User():
                         FROM public.{tablename}
                         WHERE category = '{category}'
                         '''.format(tablename=Activity.__tablename__ ,category=preference))
-        return a
+        return str(a)
 
     def create_activity(self, query):
         category, score = sample(self.get_categories(), 1)[0]
