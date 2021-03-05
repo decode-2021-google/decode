@@ -16,7 +16,6 @@ const Work = () => {
   return (
     <WorkStyles>
       <TopNav />
-      <TestAuth />
       <div className="timer">
         <Timer />
       </div>
