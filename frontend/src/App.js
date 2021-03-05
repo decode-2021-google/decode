@@ -4,8 +4,9 @@ import "./App.scss";
 //auth
 import firebase from "firebase/app";
 import "firebase/auth";
-import { FirebaseAuthProvider } from "@react-firebase/auth";
+import { FirebaseAuthProvider, IfFirebaseAuthed, IfFirebaseUnAuthed, FirebaseAuthConsumer } from "@react-firebase/auth";
 import { firebaseConfig } from "./firebase-config";
+import firebaseInstance from "./FirebaseProvider";
 
 //pages
 import { Welcome } from "./pages/welcome";
@@ -14,26 +15,37 @@ import { Relax } from "./pages/relax";
 import { Work } from "./pages/work";
 import { Categories } from "./pages/categories";
 import { NotFound } from "./pages/notFound";
+import { authMethods } from "./AuthMethods";
 
 function App() {
   return (
     <div className="App">
       <FirebaseAuthProvider {...firebaseConfig} firebase={firebase}>
+      {/* {authMethods.init(firebaseInstance)} */}
         <Switch>
           <Route path="/" exact>
-            <Welcome/>
+            <IfFirebaseUnAuthed><Welcome/></IfFirebaseUnAuthed>
+            <IfFirebaseAuthed>
+        <FirebaseAuthConsumer>
+          {({ isSignedIn, user, providerId }) => { return (<Work user={user} isSignedIn={isSignedIn}/>);}}</FirebaseAuthConsumer>
+          </IfFirebaseAuthed>
+
           </Route>
           <Route path="/work" exact>
-            <Work />
+        <FirebaseAuthConsumer>
+          {({ isSignedIn, user, providerId }) => { return (<Work user={user} isSignedIn={isSignedIn}/>);}}</FirebaseAuthConsumer>
           </Route>
           <Route path="/break" exact>
-            <Break />
+        <FirebaseAuthConsumer>
+          {({ isSignedIn, user, providerId }) => { return (<Break user={user} isSignedIn={isSignedIn}/>);}}</FirebaseAuthConsumer>
           </Route>
           <Route path="/categories" exact>
-            <Categories />
+        <FirebaseAuthConsumer>
+          {({ isSignedIn, user, providerId }) => { return (<Categories user={user} isSignedIn={isSignedIn}/>);}}</FirebaseAuthConsumer>
           </Route>
           <Route path="/relax" exact>
-            <Relax />
+        <FirebaseAuthConsumer>
+          {({ isSignedIn, user, providerId }) => { return (<Relax user={user} isSignedIn={isSignedIn}/>);}}</FirebaseAuthConsumer>
           </Route>
           <Route path="*">
             <NotFound />

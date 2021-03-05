@@ -22,12 +22,20 @@ const CategoriesStyles = styled.div`
   }
 `;
 
-const Categories = () => {
+const Categories = (props) => {
+  let categories = [];
+fetch(`/api/get_categories`)
+  .then((res) => res.json())
+  .then((data) => {
+    console.log("Categories: " + data.results);
+  }).catch((e) => console.log(e))
   return (
     <CategoriesStyles>
-      <TopNav />
+      <TopNav user={props.user} isSignedIn={props.isSignedIn}/>
       <Prompt message="What categories are you most interested in?" />
       <div className="categories">
+        
+    
         <PrimaryButton>Cute Animals and Pets</PrimaryButton>
         <PrimaryButton>Twitch Streams</PrimaryButton>
         <PrimaryButton>Cooking & Food</PrimaryButton>

@@ -20,10 +20,10 @@ const WorkStyles = styled.div`
   }
 `;
 
-const Work = () => {
+const Work = (props) => {
   return (
     <WorkStyles>
-      <TopNav />
+      <TopNav user={props.user} isSignedIn={props.isSignedIn}/>
       <Prompt message="How long do you want to work?" />
       <div className="timer">
         <Timer />

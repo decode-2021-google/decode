@@ -1,16 +1,15 @@
 import firebase from "firebase";
 
-var isSignedIn = false;
+var signedIn;
 var userInfo = {};
 
 export const authMethods = {
   init: () => {
     firebase.auth().onAuthStateChanged(function (user) {
+      
       if (user) {
-        isSignedIn = true;
+        signedIn = true;
         userInfo = firebase.auth().currentUser;
-      } else {
-        isSignedIn = false;
       }
     });
   },
@@ -20,10 +19,12 @@ export const authMethods = {
     authMethods.init();
   },
   signOut: () => {
+    signedIn = false;
     firebase.auth().signOut();
   },
   isSignedIn: () => {
-    return isSignedIn;
+    console.log(signedIn);
+    return signedIn;
   },
   getUserInfo: () => {
     return userInfo;

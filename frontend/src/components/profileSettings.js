@@ -15,9 +15,10 @@ const ProfileSettingsStyles = styled.div`
   }
 `;
 
-const ProfileSettings = () => {
+const ProfileSettings = (props) => {
   return (
     <ProfileSettingsStyles>
+    {props.isSignedIn && "Welcome back,  " + props.user.displayName}
       <div className="profile">
         <svg
           aria-hidden="true"
