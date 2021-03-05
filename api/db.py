@@ -44,11 +44,10 @@ class Connection:
         self.conn.close()
 
     def create_engine(self):
-        self.engine = create_engine('postgres://{0}:{1}@{2}:{3}/{4}'.format(self.user, self.password, self.host, self.port, self.database))
+        self.engine = create_engine('postgres+pg8000://{0}:{1}@{2}:{3}/{4}'.format(self.user, self.password, self.host, self.port, self.database))
 
     def query(self, query):
-        self.cursor.execute(query)
-        return self.cursor.fetchall()
+        return self.engine.execute(query).fetchall()
 
     def read_file(self, file):
         return open(file, 'r').read()
@@ -59,7 +58,7 @@ class Connection:
         return self.query(query)
 
     def execute(self, query, commit=True):
-        self.cursor.execute(query)
+        self.engine.execute(query)
 
-        if commit:
-            self.conn.commit()
+        #if commit:
+        #    self.conn.commit()
