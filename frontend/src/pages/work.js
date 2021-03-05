@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { DarkModeSwitch } from "../components/darkmodeSwitch";
 import { ProfileSettings } from "../components/profileSettings";
+import { ControlBar } from "../components/controlBar";
 import { TestAuth } from "../components/testAuth";
 import { Timer } from "../components/timer";
 
@@ -23,7 +24,9 @@ const Work = () => {
       <div className="timer">
         <Timer />
       </div>
-      <div className="controls"></div>
+      <div className="controls">
+        <ControlBar />
+      </div>
       <div className="bottom"></div>
     </WorkStyles>
   );
