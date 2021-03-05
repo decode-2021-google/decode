@@ -1,12 +1,12 @@
 from flask import Flask, jsonify, request
 
-APP = Flask(__name__)
+app = Flask(__name__)
 
 
 embedded_youtube_video_template = '<iframe width="{width}" height="{height}" src="https://www.youtube.com/embed/{youtube_code}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
 
 
-@APP.route('/test/get', methods=['GET'])
+@app.route('/test/get', methods=['GET'])
 def search_form():
     return jsonify({'text': 'successful'}), 200
 
@@ -15,7 +15,7 @@ def get_random_youtube_code(category):
     return '5qap5aO4i9A'
 
 
-@APP.route('/embedded/youtube', methods=['GET'])
+@app.route('/embedded/youtube', methods=['GET'])
 def get_youtube_embed():
     category = request.args.get('category', default='random')
 
@@ -28,4 +28,4 @@ def get_youtube_embed():
 
 
 if __name__ == '__main__':
-    APP.run(debug=True)
+    app.run(host="0.0.0.0", debug=True)
