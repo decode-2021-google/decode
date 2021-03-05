@@ -56,6 +56,7 @@ class Connection:
                 database=self.database  # e.g. "my-database-name"
             )
         )
+      self.engine.dialect.description_encoding = None
 
     def query(self, query):
         return self.engine.execute(query).fetchall()
