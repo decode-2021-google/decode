@@ -13,7 +13,7 @@ const RelaxNavStyles = styled.div`
     align-items: center;
 
     .approval{
-      padding-right:70%;
+      padding-right:73%;
     }
   }
 
