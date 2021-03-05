@@ -1,11 +1,16 @@
 from flask import Flask, jsonify, request, abort
 from api.embedded_templates import *
-from api.db import Connection
+from api.db_models import User
 
 app = Flask(__name__)
 categories = []
 
-conn = Connection(user='pomodoro')
+@app.route('/test/query', methods=['GET'])
+def test_query():
+    uid = request.args.get('user_id', '0')
+    u = User(uid)
+    q = u.get_activity('youtube')
+    return jsonify({'query_results': q}), 200
 
 
 @app.route('/test/get', methods=['GET'])
@@ -81,13 +86,8 @@ def rate_content():
     if user_id == -1 or activity_id == -1:
         abort(406)
 
-    static_modifier = 2  # How much the efficiency score changes
-
-    sql = conn.read_file('api/sql_scripts/change_rating.sql')
-    filled_sql = sql.format(feedback=rating, activity_id=activity_id, user_id=user_id, modifier=static_modifier)
-
-    conn.execute(filled_sql)
-
+    user = User(user_id)
+    user.update_score(activity_id, rating)
     return {'text': 'Successful'}, 200
 
 
