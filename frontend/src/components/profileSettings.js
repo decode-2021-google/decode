@@ -13,12 +13,18 @@ const ProfileSettingsStyles = styled.div`
     width: 2rem;
     height: 2rem;
   }
+  .greeting {
+    color: white;
+    padding-top: 4px;
+    padding-right: 32px;
+    font-weight: 500;
+  }
 `;
 
 const ProfileSettings = (props) => {
   return (
     <ProfileSettingsStyles>
-    {props.isSignedIn && "Welcome back,  " + props.user.displayName}
+    <div class="greeting">{props.isSignedIn && "Welcome back,  " + props.user.displayName + "!"}</div>
       <div className="profile">
         <svg
           aria-hidden="true"
