@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { TopNav } from "../components/topNav";
+import { BottomNav } from "../components/bottomNav";
 import { Timer } from "../components/timer";
 import { PrimaryButton } from "../components/primaryButton";
 import { ToDoListIcon } from "../components/toDoListIcon";

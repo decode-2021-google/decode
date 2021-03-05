@@ -4,13 +4,20 @@ import { RelaxNav } from "../components/relaxNav";
 import { ToDoListIcon } from "../components/toDoListIcon";
 import { TopNav } from "../components/topNav";
 
-const RelaxStyles = styled.div``;
+const RelaxStyles = styled.div`
+  .content {
+    margin: 2rem auto;
+    width: 80vw;
+    height: 70vh;
+    border: 1px solid red;
+  }
+`;
 
 const Relax = () => {
   return (
     <RelaxStyles>
       <TopNav />
-      Break page
+      <div className="content"></div>
       <RelaxNav />
     </RelaxStyles>
   );
