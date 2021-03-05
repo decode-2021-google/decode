@@ -82,13 +82,14 @@ def set_categories():
 
 @app.route('/api/get_content', methods=['GET'])
 def get_content():
-    # user_id = request.args.get('user_id')
+    user_id = request.args.get('user_id')
+    u = User(user_id)
+    act = u.get_random_activity()
+    print(act[0])
+    # activity_id, embed_link, video_length = get_twitch_embed(category)  # TODO: This would be replaced with a db request based on the category
 
-    category = 'random'
+    return jsonify({'activity':act}), 200
 
-    activity_id, content_type, embed_link, video_length = get_twitch_embed(category)  # TODO: This would be replaced with a db request based on the category
-
-    return jsonify({'activity_id': 0, 'content_type': content_type, 'embed_link': embed_link, 'video_length': video_length}), 200
 
 
 @app.route('/api/rate', methods=['PUT'])
@@ -104,6 +105,13 @@ def rate_content():
     user.update_score(activity_id, rating)
     return {'text': 'Successful'}, 200
 
+
+@app.route('/api/add_user', methods=['PUT'])
+def add_userid():
+    user_id = request.args.get('user_id', -1)
+    if user_id == -1:
+        abort(406)
+    User.add_userid(user_id)
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)

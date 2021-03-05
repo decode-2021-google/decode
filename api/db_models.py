@@ -30,31 +30,42 @@ class User():
     __tablename__ = 'user_categories'
 
     def __init__(self, uid):
-       self.id = uid
+        self.id = uid
+        self.get_categories()
     
 
-    def update_categories(self, categories):
-        # TODO
-        pass
+    @staticmethod
+    def add_userid(uid):
+        conn.execute("INSERT INTO public.user_categories (id, category, efficiency_score) VALUES ('{uid}', 'user', '-1')".format(uid=uid))
+
+    def set_categories(self, categories):
+        query = '''
+                INSERT INTO public.user_categories 
+                (id,category,efficiency_score) VALUES{categories};
+                '''.format(categories = ",".join([str((self.id, c, 1)) for c in categories]))
+        # print(query)
+        conn.execute(query)
 
     def get_categories(self):
         self.categories = conn.query('''SELECT category, efficiency_score
                                         FROM public.{tablename} WHERE id = '{user_id}'
-                                        ORDER BY efficiency_score ASC;
+                                        ORDER BY efficiency_score DESC;
                                         '''.format(tablename=self.__tablename__, user_id=self.id))
         return self.categories
 
-    def get_activity(self, preference):
+    def get_random_activity(self):
+        category, score = sample(self.categories[:2], 1)[0] # making sure we sample from the top 2 categories here.
         a = conn.query('''SELECT *
                         FROM public.{tablename}
                         WHERE category = '{category}'
-                        '''.format(tablename=Activity.__tablename__ ,category=preference))
-        return str(a)
+                        '''.format(tablename=Activity.__tablename__ ,category=category))
+        return sample(a, 1)[0]
 
-    def create_activity(self, query):
+
+    def create_activity(self, query, content_type):
         category, score = sample(self.get_categories(), 1)[0]
         _id = str(uuid.uuid1())
-        activity = Activity(_id, category, score, content_type='youtube', query = query)
+        activity = Activity(_id, category, score, content_type=content_type, query = query)
         activity.commit()
         return activity.serialize()
 
