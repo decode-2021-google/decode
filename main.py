@@ -68,8 +68,7 @@ def get_twitch_embed(category):
 
 @app.route('/get_content', methods=['GET'])
 def get_content():
-    # user_id = request.args.get('user_id')
-    user_id = '0'
+    user_id = request.args.get('user_id')
     u = User(user_id)
     act = u.get_random_activity()
     print(act[0])
@@ -95,6 +94,8 @@ def rate_content():
 @app.route('/api/add_user', methods=['PUT'])
 def add_userid():
     user_id = request.args.get('user_id', -1)
+    if user_id == -1:
+        abort(406)
     User.add_userid(user_id)
 
 if __name__ == '__main__':
