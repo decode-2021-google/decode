@@ -1,5 +1,6 @@
 import { DarkModeSwitch } from "./components/darkmodeSwitch";
 import { ProfileSettings } from "./components/profileSettings";
+import { TestAuth } from "./components/testAuth";
 import "./App.scss";
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
       <div className="top">
         <DarkModeSwitch />
         <ProfileSettings />
+        <TestAuth />
       </div>
       <div className="timer"></div>
       <div className="controls"></div>
