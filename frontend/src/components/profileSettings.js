@@ -18,6 +18,7 @@ const ProfileSettingsStyles = styled.div`
 const ProfileSettings = () => {
   return (
     <ProfileSettingsStyles>
+    {"Welcome back, "+ authMethods.getUserInfo().displayName}
       <div className="profile">
         <svg
           aria-hidden="true"
