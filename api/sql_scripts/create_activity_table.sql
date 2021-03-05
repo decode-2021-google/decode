@@ -1,6 +1,6 @@
 create table IF NOT EXISTS activity
 (
-	id integer not null
+	id text not null
 		constraint activity_pk
 			primary key,
 	content_type text,
