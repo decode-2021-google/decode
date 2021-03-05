@@ -1,5 +1,6 @@
 import { DarkModeSwitch } from "./components/darkmodeSwitch";
 import { ProfileSettings } from "./components/profileSettings";
+import { Timer } from "./components/timer";
 import "./App.scss";
 
 function App() {
@@ -9,7 +10,9 @@ function App() {
         <DarkModeSwitch />
         <ProfileSettings />
       </div>
-      <div className="timer"></div>
+      <div className="timer">
+        <Timer />
+      </div>
       <div className="controls"></div>
       <div className="bottom"></div>
     </div>
