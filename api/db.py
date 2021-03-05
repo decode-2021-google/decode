@@ -66,7 +66,7 @@ class Connection:
         return open(file, 'r').read()
 
     def query_file(self, file, pandas=True):
-        query = self.__read_file(file)
+        query = self.read_file(file)
 
         if pandas:
             return self.query_pandadf(query)
@@ -95,44 +95,3 @@ def upsert(from_conn_id, from_table, to_conn_id, to_table, from_schema='public',
 
     print('Upserting table data...')
     df.to_sql(to_table, schema=to_schema, con=to_conn.engine, method='multi', if_exists=overwrite, index=False)
-
-
-if __name__ == '__main__':
-    conn = Connection(user='pomodoro')
-
-    sql = '''
-    with get_category AS (
-    SELECT category
-        FROM public.activity
-
-        WHERE
-            id = {activity_id}
-)
-
-UPDATE public.user AS update_table
-    SET
-        efficiency_score = CASE 
-                            WHEN '{feedback}' = 'positive' THEN 
-                                score.efficiency_score * {modifier} 
-                            ELSE 
-                                score.efficiency_score / {modifier} 
-                           END
-
-    FROM
-    (
-        SELECT id, category, efficiency_score
-            FROM public.user
-
-            WHERE
-                id = '{user_id}'
-                AND
-                category IN (SELECT * FROM get_category)
-    ) score
-    
-    WHERE 
-        update_table.id = score.id 
-        AND 
-        update_table.category = score.category
-'''.format(feedback='negative', activity_id=0, user_id=1, modifier=2)
-
-    conn.execute(sql)
