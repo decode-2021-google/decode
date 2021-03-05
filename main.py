@@ -9,7 +9,7 @@ categories = []
 def test_query():
     uid = request.args.get('user_id', '0')
     u = User(uid)
-    q = u.get_activity('youtube')
+    q = str(u.get_categories())
     return jsonify({'query_results': q}), 200
 
 
