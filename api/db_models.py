@@ -7,15 +7,14 @@ conn = Connection(user='pomodoro')
 class Activity():
     __tablename__ = 'activity'
     
-    def __init__(self, _id, category, content_type, score=0):
+    def __init__(self, _id, category, content_type, query, score=0):
         self.id = _id
         self.category = category
         self.score = score
         self.content_type=content_type
+        self.query = query
 
     def commit(self):
-        if 'query' not in self.__dict__:
-            raise ValueError(f"Query string for {self.__repr__} is not set")
         conn.execute('''
         INSERT INTO public.{tablename} (id, category, query, content_type) 
         VALUES ('{id}', '{category}', '{query}', '{content_type}')
@@ -25,8 +24,6 @@ class Activity():
 
     def serialize(self):
         return self.__dict__
-    def get_query(self):
-        return self.query
 
 
 class User():
@@ -37,7 +34,8 @@ class User():
     
     def get_categories(self):
         self.categories = conn.query('''SELECT category, efficiency_score
-                                        FROM public.{tablename} WHERE id = \'{user_id}\''''
+                                        FROM public.{tablename} WHERE id = \'{user_id}\'
+                                        ORDER BY efficiency_score ASC;'''
                                         .format(tablename=self.__tablename__, user_id=self.id))
         return self.categories
 
@@ -48,12 +46,10 @@ class User():
                         '''.format(tablename=Activity.__tablename__ ,category=preference))
 
 
-    def create_activity(self, preference):
+    def create_activity(self, preference, query):
         act = sample(self.get_categories(), 1)[0]
-        _id = uuid.uuid1()
-        activity = Activity(_id, category = act[0], score=act[1], content_type='youtube')
-        activity.query = 'https://test123.com'
-        # Set the query url, and figure out the content type before committing
+        _id = str(uuid.uuid1())
+        activity = Activity(_id, category = act[0], score=act[1], content_type='youtube', query = query)
         activity.commit()
         return activity.serialize()
 
