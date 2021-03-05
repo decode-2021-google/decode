@@ -8,7 +8,7 @@ import { PrimaryButton } from "../components/primaryButton";
 const CategoriesStyles = styled.div`
   .categories {
     margin: 0 auto -1.2rem auto;
-    width: 46vw;
+    width: 42rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

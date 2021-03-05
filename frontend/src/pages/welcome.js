@@ -4,7 +4,7 @@ import { TopNav } from "../components/topNav";
 import { Timer } from "../components/timer";
 import { PrimaryButton } from "../components/primaryButton";
 import { ToDoListIcon } from "../components/toDoListIcon";
-import {authMethods} from "../AuthMethods";
+import { authMethods } from "../AuthMethods";
 
 const WelcomeStyles = styled.div`
   .button-container {
@@ -14,7 +14,8 @@ const WelcomeStyles = styled.div`
   .sign-in-container {
     text-align: center;
     color: white;
-    a {
+    span {
+      cursor: pointer;
       font-weight: 700;
     }
   }
@@ -29,12 +30,14 @@ const Welcome = () => {
         <PrimaryButton>Start Timer</PrimaryButton>
       </div>
       <div className="sign-in-container">
-        Already have an account? <a
-          onClick={() => { authMethods.signIn()
-          }}>
-        
+        Already have an account?{" "}
+        <span
+          onClick={() => {
+            authMethods.signIn();
+          }}
+        >
           Sign In with Google
-        </a>
+        </span>
       </div>
       <ToDoListIcon />
     </WelcomeStyles>
