@@ -6,7 +6,7 @@ WITH get_category AS (
             id = {activity_id}
 )
 
-UPDATE public.user AS update_table
+UPDATE public.user_categories AS update_table
     SET
         efficiency_score = CASE 
                             WHEN '{feedback}' = 'positive' THEN 
@@ -20,7 +20,7 @@ UPDATE public.user AS update_table
     FROM
     (
         SELECT id, category, efficiency_score
-            FROM public.user
+            FROM public.user_categories
 
             WHERE
                 id = '{user_id}'
