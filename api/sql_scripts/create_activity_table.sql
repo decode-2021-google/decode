@@ -1,8 +1,10 @@
-create table activity
+create table IF NOT EXISTS activity
 (
-	id int,
+	id integer not null
+		constraint activity_pk
+			primary key,
 	content_type text,
-	query int,
+	query text,
 	duration int,
     category text
 );

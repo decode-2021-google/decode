@@ -66,7 +66,7 @@ class Connection:
         return open(file, 'r').read()
 
     def query_file(self, file, pandas=True):
-        query = self.__read_file(file)
+        query = self.read_file(file)
 
         if pandas:
             return self.query_pandadf(query)
