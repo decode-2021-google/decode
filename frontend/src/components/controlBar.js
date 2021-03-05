@@ -7,9 +7,11 @@ import styled from "styled-components";
 
 const ControlBarStyles = styled.div`
   .controlButton {
+    margin: 100px 0px 40px 0px;
     display: flex;
     align-items: center;
     justify-content: center;
+
   }
 
   .primary-control {
@@ -22,6 +24,7 @@ const ControlBarStyles = styled.div`
       drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.04));
   }
   .secondary-control {
+    margin: 0px 30px 0px 30px;
     color: #ffe9ad;
     width: 60px;
     height: 60px;

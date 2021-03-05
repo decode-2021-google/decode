@@ -2,6 +2,12 @@ runtime: python39
 entrypoint: gunicorn -b :$PORT main:app
 
 handlers:
+- url: /(.*\.(json|ico|js))$
+  static_files: frontend/build/\1
+  upload: frontend/build/.*\.(json|ico|js)$
+- url: /
+  static_files: frontend/build/index.html
+  upload: frontend/build/index.html
 - url: /.*
   secure: always
   redirect_http_response_code: 301
