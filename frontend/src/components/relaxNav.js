@@ -12,13 +12,7 @@ const RelaxNavStyles = styled.div`
     display: flex;
 
     .approval{
-      align: left;
-      padding: 1rem 2rem;
-    }
-  
-    .controls {
-      align: right;
-      padding: 1rem 2rem;
+      padding-right:70%;
     }
   }
 
@@ -38,8 +32,10 @@ const RelaxNav = () => {
               <Icon icon={thumbsUp} class="footer-icon"/>
               <Icon icon={thumbsDown} class="footer-icon"/>
             </div>
+            <div className="button-container">
+                <PrimaryButton text="Skip Content"/>
+            </div>
             <div className="controls">
-              <PrimaryButton text="Start Timer" />
               <Icon icon={timer16Filled} class="footer-icon" />
             </div>
           </div>
