@@ -4,7 +4,7 @@ import "./App.scss";
 //auth
 import firebase from "firebase/app";
 import "firebase/auth";
-import { FirebaseAuthProvider } from "@react-firebase/auth";
+import { FirebaseAuthProvider, IfFirebaseAuthed, IfFirebaseUnAuthed } from "@react-firebase/auth";
 import { firebaseConfig } from "./firebase-config";
 
 //pages
@@ -21,7 +21,9 @@ function App() {
       <FirebaseAuthProvider {...firebaseConfig} firebase={firebase}>
         <Switch>
           <Route path="/" exact>
-            <Welcome/>
+            <IfFirebaseUnAuthed><Welcome/></IfFirebaseUnAuthed>
+            <IfFirebaseAuthed><Work/></IfFirebaseAuthed>
+            
           </Route>
           <Route path="/work" exact>
             <Work />
