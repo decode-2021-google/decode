@@ -12,6 +12,12 @@ const WorkStyles = styled.div`
     display: flex;
     justify-content: space-between;
   }
+  .timer {
+    margin-top: -1rem;
+  }
+  .controls {
+    margin-bottom: -2.5rem;
+  }
 `;
 
 const Work = () => {

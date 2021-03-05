@@ -17,6 +17,13 @@ code {
     monospace;
 }
 
+input{
+  background: none;
+  color: inherit;
+  border: none;
+  outline: none;
+}
+
 *{
   margin: 0;
   padding: 0;

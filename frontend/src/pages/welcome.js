@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { TopNav } from "../components/topNav";
 import { Timer } from "../components/timer";
@@ -8,8 +8,8 @@ import { authMethods } from "../AuthMethods";
 
 const WelcomeStyles = styled.div`
   .button-container {
-    text-align: center;
     padding: 2rem 0;
+    text-align: center;
   }
   .sign-in-container {
     text-align: center;
@@ -22,10 +22,17 @@ const WelcomeStyles = styled.div`
 `;
 
 const Welcome = () => {
+  const [totalTime, setTotalTime] = useState(0);
+  const [playState, setPlayState] = useState(false);
+
   return (
     <WelcomeStyles>
       <TopNav />
-      <Timer />
+      <Timer
+        totalTime={totalTime}
+        setTotalTime={setTotalTime}
+        playState={playState}
+      />
       <div className="button-container">
         <PrimaryButton>Start Timer</PrimaryButton>
       </div>
