@@ -44,7 +44,7 @@ class Connection:
         self.conn.close()
 
     def create_engine(self):
-        self.engine = create_engine('postgresql+pg8000://{0}:{1}@{2}:{3}/{4}'.format(self.user, self.password, self.host, self.port, self.database))
+        self.engine = create_engine('postgresql+pg8000://{0}:{1}@{2}:{3}/{4}?unix_socket=/cloudsql/pomodoro'.format(self.user, self.password, self.host, self.port, self.database))
 
     def query(self, query):
         return self.engine.execute(query).fetchall()
