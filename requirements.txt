@@ -2,6 +2,5 @@ Flask
 flask_testing
 gunicorn
 psycopg2
-pandas
 sqlalchemy
 psycopg2-binary
