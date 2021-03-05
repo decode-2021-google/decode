@@ -3,9 +3,9 @@ entrypoint: gunicorn -b :$PORT main:app --timeout 0 --log-level=debug
 instance_class: F4_1G
 
 handlers:
-- url: /(.*\.(json|ico|js))$
+- url: /(.*\.(json|ico|js|png|css))$
   static_files: frontend/build/\1
-  upload: frontend/build/.*\.(json|ico|js)$
+  upload: frontend/build/.*\.(json|ico|js|png|css)$
 - url: /
   static_files: frontend/build/index.html
   upload: frontend/build/index.html

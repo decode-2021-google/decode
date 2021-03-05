@@ -6,6 +6,7 @@ import { Timer } from "../components/timer";
 import { PrimaryButton } from "../components/primaryButton";
 import { ToDoListIcon } from "../components/toDoListIcon";
 import { authMethods } from "../AuthMethods";
+import { useAnimation } from "framer-motion"
 
 const WelcomeStyles = styled.div`
   .button-container {
@@ -25,6 +26,8 @@ const WelcomeStyles = styled.div`
 const Welcome = (props) => {
   const [totalTime, setTotalTime] = useState(0);
   const [playState, setPlayState] = useState(false);
+  const controls = useAnimation();
+
   return (
     <WelcomeStyles>
       <TopNav />
@@ -32,8 +35,14 @@ const Welcome = (props) => {
         totalTime={totalTime}
         setTotalTime={setTotalTime}
         playState={playState}
+        controls={controls}
       />
-      <div className="button-container">
+      <div className="button-container" onClick={() => {
+          controls.start({
+            rotate: 360,
+            transition: { duration: totalTime * 60, ease: "linear" }
+          });
+        }}>
         <PrimaryButton>Start Timer</PrimaryButton>
       </div>
       <div className="sign-in-container">

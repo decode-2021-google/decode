@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import styled, { keyframes } from "styled-components";
+import {motion, useAnimation} from "framer-motion"
 
 const spin = keyframes`
   from{
@@ -64,22 +65,17 @@ const TimerStyles = styled.div`
   }
 `;
 
-const Timer = ({ totalTime, setTotalTime, playState }) => {
-  const circleRef = useRef(null);
-  useEffect(() => {
-    circleRef.current.style.animationDuration = `${totalTime * 60}s`;
-    if (playState) {
-      console.log("run");
-      circleRef.current.style.animationPlayState = true;
-    }
-  }, [playState, totalTime]);
-
+const Timer = ({ totalTime, setTotalTime, playState, controls }) => {
   return (
     <TimerStyles>
       <div className="container">
-        <div className="large-circle" ref={circleRef}>
-          <div className="small-circle"></div>
-        </div>
+        <motion.div
+            name="the_timer"
+            className="large-circle"
+            animate={controls}
+            >
+            <div className="small-circle"></div>
+          </motion.div>
         <div className="info">
           <input
             className="number"
