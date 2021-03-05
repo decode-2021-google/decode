@@ -13,10 +13,10 @@ const RelaxStyles = styled.div`
   }
 `;
 
-const Relax = () => {
+const Relax = (props) => {
   return (
     <RelaxStyles>
-      <TopNav />
+      <TopNav user={props.user} isSignedIn={props.isSignedIn}/>
       <div className="content"></div>
       <RelaxNav />
     </RelaxStyles>

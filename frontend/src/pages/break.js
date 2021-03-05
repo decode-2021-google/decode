@@ -9,10 +9,10 @@ import { TaskList } from "../components/taskList";
  
 const BreakStyles = styled.div``;
 
-const Break = () => {
+const Break = (props) => {
   return (
     <BreakStyles>
-      <TopNav />
+      <TopNav user={props.user} isSignedIn={props.isSignedIn}/>
       <Prompt message="How long do you want to break?" />
       <Timer />
       <PageNav left="/work" right="/categories" number={2} />
