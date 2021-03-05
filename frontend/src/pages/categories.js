@@ -24,18 +24,17 @@ const CategoriesStyles = styled.div`
 
 const Categories = (props) => {
   let categories = [];
-fetch(`/api/get_categories`)
-  .then((res) => res.json())
-  .then((data) => {
-    console.log("Categories: " + data.results);
-  }).catch((e) => console.log(e))
+  fetch(`/api/get_categories`)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("Categories: " + data.results);
+    })
+    .catch((e) => console.log(e));
   return (
     <CategoriesStyles>
-      <TopNav user={props.user} isSignedIn={props.isSignedIn}/>
+      <TopNav user={props.user} isSignedIn={props.isSignedIn} />
       <Prompt message="What categories are you most interested in?" />
       <div className="categories">
-        
-    
         <PrimaryButton>Cute Animals and Pets</PrimaryButton>
         <PrimaryButton>Twitch Streams</PrimaryButton>
         <PrimaryButton>Cooking & Food</PrimaryButton>
@@ -45,7 +44,7 @@ fetch(`/api/get_categories`)
         <PrimaryButton>Youtube Videos</PrimaryButton>
         <PrimaryButton>ASMR Videos</PrimaryButton>
       </div>
-      <PageNav left="/break" right="/work" number={3} />
+      <PageNav left="/break" right="/relax" number={3} />
       <ToDoListIcon />
     </CategoriesStyles>
   );

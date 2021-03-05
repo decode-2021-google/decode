@@ -5,6 +5,9 @@ import styled from "styled-components";
 
 const IconStyles = styled.div`
   .todo-icon {
+    position: fixed;
+    left: 2rem;
+    bottom: 2rem;
     color: #ffffff;
     width: 60px;
     height: 60px;

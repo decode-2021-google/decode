@@ -44,7 +44,7 @@ class Connection:
         self.conn.close()
 
     def create_engine(self):
-      self.engine = sqlalchemy.create_engine(
+        self.engine = sqlalchemy.create_engine(
             # Equivalent URL:
             # postgres+pg8000://<db_user>:<db_pass>@<db_host>:<db_port>/<db_name>
             sqlalchemy.engine.url.URL(
@@ -56,7 +56,7 @@ class Connection:
                 database=self.database  # e.g. "my-database-name"
             )
         )
-      self.engine.dialect.description_encoding = None
+        self.engine.dialect.description_encoding = None
 
     def query(self, query):
         return self.engine.execute(query).fetchall()
