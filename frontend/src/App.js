@@ -22,7 +22,6 @@ function App() {
         <Switch>
           <Route path="/" exact>
             <Welcome/>
-            <Work/>
           </Route>
           <Route path="/work" exact>
             <Work />
