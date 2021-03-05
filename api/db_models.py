@@ -18,9 +18,7 @@ class Activity():
         conn.execute('''
         INSERT INTO public.{tablename} (id, category, query, content_type) 
         VALUES ('{id}', '{category}', '{query}', '{content_type}')
-        '''.format(tablename=self.__tablename__, id=self.id, category=self.category, query='test' ,content_type=self.content_type))
-        print(conn.query('''SELECT * from public.{tablename}'''
-                        .format(tablename=self.__tablename__)))
+        '''.format(tablename=self.__tablename__, id=self.id, category=self.category, query=self.query ,content_type=self.content_type))
 
     def serialize(self):
         return self.__dict__
@@ -39,23 +37,16 @@ class User():
                                         .format(tablename=self.__tablename__, user_id=self.id))
         return self.categories
 
-    def get_activity(self, preference):
+    def get_activity(self):
         a = conn.query('''SELECT *
                         FROM public.{tablename}
                         WHERE category = '{category}'
                         '''.format(tablename=Activity.__tablename__ ,category=preference))
+        return a
 
-
-    def create_activity(self, preference, query):
-        act = sample(self.get_categories(), 1)[0]
+    def create_activity(self,query):
+        category, score = sample(self.get_categories(), 1)[0]
         _id = str(uuid.uuid1())
-        activity = Activity(_id, category = act[0], score=act[1], content_type='youtube', query = query)
+        activity = Activity(_id, category, score, content_type='youtube', query = query)
         activity.commit()
         return activity.serialize()
-
-if __name__ == "__main__":
-    u = User('0')
-    print(u.get_categories())
-    print(u.get_activity('0'))
-    print(u.create_activity('0'))
-    
