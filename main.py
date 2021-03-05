@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from embedded_templates import *
+from api.embedded_templates import *
 
 
 app = Flask(__name__)
@@ -16,7 +16,9 @@ def get_random_youtube_code(category):
 
 @app.route('/embed/youtube', methods=['GET'])
 def get_youtube_embed():
+    # user_id = request.args.get('user_id')
     category = request.args.get('category', default='random')
+    ended_early = request.args.get('ended_early', default='False')  # If the user skips the content before the timer runs out
 
     youtube_dict = get_random_youtube_code(category)
 
@@ -39,7 +41,9 @@ def get_random_twitch_clip(category):
 
 @app.route('/embed/twitch', methods=['GET'])
 def get_twitch_embed():
+    # user_id = request.args.get('user_id')
     category = request.args.get('category', default='random')
+    ended_early = request.args.get('ended_early', default='False')  # If the user skips the content before the timer runs out
 
     get_twitch_clip = True  # TODO: Create some randomness later
 
@@ -61,6 +65,14 @@ def get_twitch_embed():
         video_length = twitch_dict['video_length']
 
     return jsonify({'embed_link': embed_link, 'video_length': video_length}), 200
+
+
+@app.route('/rate/thumbs', methods=['PUT'])
+def rate_video():
+    # user_id = request.args.get('user_id')
+    rating = request.args.get('rating', default=0)
+
+    # TODO: Send rating to db
 
 
 if __name__ == '__main__':
