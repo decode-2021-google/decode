@@ -40,7 +40,6 @@ const Welcome = () => {
           Sign In with Google
         </span>
       </div>
-      <BottomNav />
       <ToDoListIcon />
     </WelcomeStyles>
   );
