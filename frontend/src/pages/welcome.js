@@ -25,7 +25,7 @@ const Welcome = () => {
       <TopNav />
       <Timer />
       <div className="button-container">
-        <PrimaryButton text="Start Timer" />
+        <PrimaryButton>Start Timer</PrimaryButton>
       </div>
       <div className="sign-in-container">
         Already have an account? <a href="">Sign in</a>
