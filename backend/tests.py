@@ -1,11 +1,11 @@
 from flask_testing import TestCase
 
-import app  # Import flask app
+import main  # Import flask app
 
 
 class TestEndpoints(TestCase):
     def create_app(self):
-        return app.APP
+        return main.app
 
     def test_get_test(self):
         response = self.client.get("/test/get")
