@@ -10,11 +10,11 @@ import styled from "styled-components";
 const RelaxNavStyles = styled.div` 
   .footer {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+  }
 
-    .approval{
-      padding-right:73%;
-    }
+  .controls {
+    vertical-align: middle;
   }
 
   .footer-icon {
@@ -33,10 +33,9 @@ const RelaxNav = () => {
               <Icon icon={thumbsUp} class="footer-icon"/>
               <Icon icon={thumbsDown} class="footer-icon"/>
             </div>
-            <div className="button-container">
-              <PrimaryButton>Skip Content</PrimaryButton>
-            </div>
+            
             <div className="controls">
+              <PrimaryButton>Skip Content</PrimaryButton>
               <Icon icon={timer16Filled} class="footer-icon" />
             </div>
           </div>
