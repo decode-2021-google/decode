@@ -7,7 +7,7 @@ import styled from "styled-components";
 
 const ControlBarStyles = styled.div`
   .controlButton {
-    margin: 100px 0px 40px 0px;
+    margin: 2rem 0px 0px 0px;
     display: flex;
     align-items: center;
     justify-content: center;
