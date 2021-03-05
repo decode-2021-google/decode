@@ -4,6 +4,7 @@ import { ToDoListIcon } from "../components/toDoListIcon";
 import { TopNav } from "../components/topNav";
 import { Prompt } from "../components/prompt";
 import { PrimaryButton } from "../components/primaryButton";
+import { PageNav } from "../components/pageNav";
 
 const CategoriesStyles = styled.div`
   .categories {
@@ -36,6 +37,7 @@ const Categories = () => {
         <PrimaryButton>Youtube Videos</PrimaryButton>
         <PrimaryButton>ASMR Videos</PrimaryButton>
       </div>
+      <PageNav left="/break" right="/work" number={3} />
       <ToDoListIcon />
     </CategoriesStyles>
   );
