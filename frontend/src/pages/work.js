@@ -7,6 +7,7 @@ import { ToDoListIcon } from "../components/toDoListIcon";
 import { PageNav } from "../components/pageNav";
 import { Prompt } from "../components/prompt";
 import { FirebaseAuthProvider, IfFirebaseAuthed, IfFirebaseUnAuthed, FirebaseAuthConsumer } from "@react-firebase/auth";
+import { useAnimation } from "framer-motion"
 
 const WorkStyles = styled.div`
   .top {
@@ -22,6 +23,8 @@ const WorkStyles = styled.div`
 `;
 
 const Work = (props) => {
+  const controls = useAnimation();
+
   return (
     <WorkStyles>
         
@@ -41,7 +44,7 @@ const Work = (props) => {
       <TopNav user={props.user} isSignedIn={props.isSignedIn}/>
       <Prompt message="How long do you want to work?" />
       <div className="timer">
-        <Timer />
+        <Timer controls={controls} />
       </div>
       <div className="controls">
         <ControlBar />
