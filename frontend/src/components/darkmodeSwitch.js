@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 const DarkModeSwitchStyles = styled.div`
@@ -17,13 +18,44 @@ const DarkModeSwitchStyles = styled.div`
     top: 50%;
     left: 0.2rem;
     transform: translateY(-50%);
+    transition: 0.3s all ease 0.1s;
   }
 `;
 
 const DarkModeSwitch = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const currentLocation = useLocation();
+  useEffect(() => {
+    console.log(isDarkMode);
+    const bodyEl = document.querySelector("body");
+    if (isDarkMode) {
+      bodyEl.style.background = "#22303C";
+    } else {
+      switch (currentLocation.pathname) {
+        case "/break":
+          bodyEl.style.background =
+            "linear-gradient(335.92deg, #15202B 5.49%, #192734 73.38%, #22303C 104.99%)";
+          break;
+        case "/work":
+          bodyEl.style.background =
+            "linear-gradient(335.92deg, #F97902 5.49%, #FFB200 73.38%, #FFB800 104.99%)";
+          break;
+        case "/":
+          bodyEl.style.background =
+            "linear-gradient(335.92deg, #F97902 5.49%, #FFB200 73.38%, #FFB800 104.99%)";
+          break;
+        case "/categories":
+          bodyEl.style.background =
+            "linear-gradient(335.92deg, #4D1AB9 5.49%, #D273F3 104.99%)";
+          break;
+        default:
+          return;
+      }
+    }
+  }, [isDarkMode]);
   return (
-    <DarkModeSwitchStyles>
-      <div className="dot"></div>
+    <DarkModeSwitchStyles onClick={() => setIsDarkMode(!isDarkMode)}>
+      <div className="dot" style={{ left: isDarkMode ? "1.2rem" : "0.2rem" }} />
     </DarkModeSwitchStyles>
   );
 };

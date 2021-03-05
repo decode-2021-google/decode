@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { DarkModeSwitch } from "./darkmodeSwitch";
-import { ProfileSettings, profileSettings } from "./profileSettings";
+import { ProfileSettings } from "./profileSettings";
 
 const TopNavStyles = styled.div`
   display: flex;
