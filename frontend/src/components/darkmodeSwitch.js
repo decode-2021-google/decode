@@ -35,6 +35,10 @@ const DarkModeSwitch = () => {
           bodyEl.style.background =
             "linear-gradient(335.92deg, #1A71B9 5.49%, #73D5F3 104.99%)";
           break;
+        case "/relax":
+          bodyEl.style.background =
+            "linear-gradient(335.92deg, #1A71B9 5.49%, #73D5F3 104.99%)";
+          break;
         case "/work":
           bodyEl.style.background =
             "linear-gradient(335.92deg, #F97902 5.49%, #FFB200 73.38%, #FFB800 104.99%)";
