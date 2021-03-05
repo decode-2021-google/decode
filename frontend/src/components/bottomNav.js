@@ -1,5 +1,3 @@
-import React from "react";
-import styled from "styled-components";
 import { DarkModeSwitch } from "./darkmodeSwitch";
 import { RelaxNav } from "./relaxNav";
 import { ToDoListIcon } from "./toDoListIcon";

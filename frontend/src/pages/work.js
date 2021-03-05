@@ -12,12 +12,18 @@ const WorkStyles = styled.div`
     display: flex;
     justify-content: space-between;
   }
+  .timer {
+    margin-top: -1rem;
+  }
+  .controls {
+    margin-bottom: -2.5rem;
+  }
 `;
 
-const Work = () => {
+const Work = (props) => {
   return (
     <WorkStyles>
-      <TopNav />
+      <TopNav user={props.user} isSignedIn={props.isSignedIn}/>
       <Prompt message="How long do you want to work?" />
       <div className="timer">
         <Timer />

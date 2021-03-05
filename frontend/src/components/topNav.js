@@ -8,11 +8,11 @@ const TopNavStyles = styled.div`
   justify-content: space-between;
 `;
 
-const TopNav = () => {
+const TopNav = (props) => {
   return (
     <TopNavStyles>
       <DarkModeSwitch />
-      <ProfileSettings />
+      <ProfileSettings user={props.user} isSignedIn={props.isSignedIn}/>
     </TopNavStyles>
   );
 };
