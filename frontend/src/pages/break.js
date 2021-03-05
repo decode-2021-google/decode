@@ -5,17 +5,19 @@ import { Timer } from "../components/timer";
 import { PageNav } from "../components/pageNav";
 import { Prompt } from "../components/prompt";
 import { ToDoListIcon } from "../components/toDoListIcon";
-
+import { TaskList } from "../components/taskList";
+ 
 const BreakStyles = styled.div``;
 
-const Break = () => {
+const Break = (props) => {
   return (
     <BreakStyles>
-      <TopNav />
+      <TopNav user={props.user} isSignedIn={props.isSignedIn}/>
       <Prompt message="How long do you want to break?" />
       <Timer />
       <PageNav left="/work" right="/categories" number={2} />
       <ToDoListIcon />
+      <TaskList />
     </BreakStyles>
   );
 };

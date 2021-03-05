@@ -11,13 +11,12 @@ const ControlBarStyles = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-
   }
 
   .primary-control {
     color: #ffffff;
-    width: 100px;
-    height: 100px;
+    width: 4rem;
+    height: 4rem;
     filter: drop-shadow(0px 24px 32px rgba(0, 0, 0, 0.04)),
       drop-shadow(0px 16px 24px rgba(0, 0, 0, 0.04)),
       drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.04)),
@@ -26,8 +25,8 @@ const ControlBarStyles = styled.div`
   .secondary-control {
     margin: 0px 30px 0px 30px;
     color: #ffe9ad;
-    width: 60px;
-    height: 60px;
+    width: 3rem;
+    height: 3rem;
   }
 `;
 const ControlBar = () => {
