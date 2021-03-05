@@ -1,6 +1,9 @@
 steps:
 - name: "node"
   entrypoint: yarn
+  args: ["--cwd", "frontend/", "install"]
+- name: "node"
+  entrypoint: yarn
   args: ["--cwd", "frontend/", "build"]
 - name: "gcr.io/cloud-builders/gcloud"
   args: ["app", "deploy"]
