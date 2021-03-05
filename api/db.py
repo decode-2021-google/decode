@@ -44,20 +44,16 @@ class Connection:
         self.conn.close()
 
     def create_engine(self):
-        self.engine = sqlalchemy.create_engine(
+      self.engine = sqlalchemy.create_engine(
             # Equivalent URL:
-            # postgres+pg8000://<db_user>:<db_pass>@/<db_name>
-            #                         ?unix_sock=<socket_path>/<cloud_sql_instance_name>/.s.PGSQL.5432
+            # postgres+pg8000://<db_user>:<db_pass>@<db_host>:<db_port>/<db_name>
             sqlalchemy.engine.url.URL(
                 drivername="postgresql+pg8000",
                 username=self.user,  # e.g. "my-database-user"
                 password=self.password,  # e.g. "my-database-password"
-                database=self.database,  # e.g. "my-database-name"
-                query={
-                    "unix_sock": "{}/{}/.s.PGSQL.5432".format(
-                        "/cloudsql",  
-                        "decode-hackathon:us-central1:pomodoro")  # i.e "<PROJECT-NAME>:<INSTANCE-REGION>:<INSTANCE-NAME>"
-                }
+                host=self.host,  # e.g. "127.0.0.1"
+                port=self.port,  # e.g. 5432
+                database=self.database  # e.g. "my-database-name"
             )
         )
 
