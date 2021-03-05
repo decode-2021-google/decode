@@ -10,10 +10,10 @@ const BottomNavStyles = styled.div`
 
 const BottomNav = () => {
   return (
-    <TopNavStyles>
+    <BottomNavStyles>
       <DarkModeSwitch />
       <ProfileSettings />
-    </TopNavStyles>
+    </BottomNavStyles>
   );
 };
 
