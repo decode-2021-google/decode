@@ -3,3 +3,4 @@ flask_testing
 gunicorn
 psycopg2
 pandas
+sqlalchemy
