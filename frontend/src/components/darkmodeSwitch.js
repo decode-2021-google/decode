@@ -26,7 +26,6 @@ const DarkModeSwitch = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const currentLocation = useLocation();
   useEffect(() => {
-    console.log(isDarkMode);
     const bodyEl = document.querySelector("body");
     if (isDarkMode) {
       bodyEl.style.background = "#22303C";

@@ -4,6 +4,8 @@ import { ControlBar } from "../components/controlBar";
 import { TopNav } from "../components/topNav";
 import { Timer } from "../components/timer";
 import { ToDoListIcon } from "../components/toDoListIcon";
+import { PageNav } from "../components/pageNav";
+import { Prompt } from "../components/prompt";
 
 const WorkStyles = styled.div`
   .top {
@@ -16,13 +18,14 @@ const Work = () => {
   return (
     <WorkStyles>
       <TopNav />
+      <Prompt message="How long do you want to work?" />
       <div className="timer">
         <Timer />
       </div>
       <div className="controls">
         <ControlBar />
       </div>
-      <div className="bottom"></div>
+      <PageNav number={1} left="" right="/break" />
       <ToDoListIcon />
     </WorkStyles>
   );
