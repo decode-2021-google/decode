@@ -1,9 +1,14 @@
-from flask import Flask, jsonify, request, abort
+from flask import Flask, jsonify, request, abort, render_template
 from api.embedded_templates import *
 from api.db_models import User
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='frontend/build', static_url_path='', template_folder='frontend/build')
 categories = []
+
+
+@app.route("/")
+def index():
+    return render_template("index.html")
 
 @app.route('/test/query', methods=['GET'])
 def test_query():
